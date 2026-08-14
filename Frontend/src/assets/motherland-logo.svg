@@ -1,0 +1,16 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#E7E7E7"/>
+  <circle cx="256" cy="256" r="244" fill="#F6F6F6" stroke="#2F6FB2" stroke-width="6"/>
+
+  <!-- Left blue M -->
+  <path d="M72 260L172 80L258 196V326L172 206L82 368L72 345L141 251L72 260Z" fill="#2F6FB2"/>
+  <path d="M104 345L172 224L246 324V414L172 306L115 392L104 367V345Z" fill="#2F6FB2"/>
+
+  <!-- Right red M -->
+  <path d="M440 260L340 80L254 196V326L340 206L430 368L440 345L371 251L440 260Z" fill="#B4002E"/>
+  <path d="M408 345L340 224L266 324V414L340 306L397 392L408 367V345Z" fill="#B4002E"/>
+
+  <!-- Text -->
+  <text x="256" y="451" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" fill="#2F6FB2">MOTHERLAND</text>
+  <text x="256" y="482" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="52" font-weight="800" fill="#B4002E">OVERSEAS</text>
+</svg>

@@ -1,0 +1,37 @@
+{
+  "name": "MORMS Development",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/var/www/html",
+  
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "xdebug.php-debug",
+        "bmewburn.vscode-intelephense-client",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "onecentlin.laravel-blade-snippets",
+        "ms-azuretools.vscode-docker",
+        "cweijan.vscode-postgresql-client",
+        "mikestead.dotenv",
+        "eamodio.gitlens",
+        "PKief.material-icon-theme"
+      ],
+      "settings": {
+        "intelephense.files.maxSize": 5000000,
+        "files.associations": {
+          "*.blade.php": "blade",
+          "*.php": "php"
+        },
+        "php.validate.enable": true
+      }
+    }
+  },
+  
+  "postCreateCommand": "composer install && cp .env.example .env || true",
+  "postStartCommand": "php artisan key:generate || true",
+  
+  "remoteUser": "www-data",
+  "forwardPorts": [8000, 5432, 5050],
+  "shutdownAction": "stopCompose"
+}

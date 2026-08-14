@@ -1,0 +1,5 @@
+*.agdai
+**/MAlonzo/**
+Backend/.devcontainer/app/.env 
+Backend/.devcontainer/app/.env.bak 
+Backend/.devcontainer/.env .env *.env.bak

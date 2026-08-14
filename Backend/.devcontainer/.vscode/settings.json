@@ -1,0 +1,13 @@
+{
+    "intelephense.files.maxSize": 5000000,
+    "intelephense.environment.phpVersion": "8.2",
+    "files.associations": {
+        "*.blade.php": "blade",
+        "*.php": "php"
+    },
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client",
+        "editor.formatOnSave": true
+    },
+    "laravel-extra-intellisense.phpcsEnabled": false
+}

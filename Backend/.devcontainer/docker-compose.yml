@@ -1,0 +1,76 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: morms_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - morms-network
+    depends_on:
+      - postgres
+    environment:
+      - XDEBUG_MODE=debug
+      - XDEBUG_CONFIG=client_host=host.docker.internal
+
+  nginx:
+    image: nginx:alpine
+    container_name: morms_nginx
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./app:/var/www/html
+      - ./.docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - morms-network
+    depends_on:
+      - app
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: morms_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: morms_db
+      POSTGRES_USER: morms_user
+      POSTGRES_PASSWORD: secure_password_123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - morms-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U morms_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: morms_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@morms.com
+      PGADMIN_DEFAULT_PASSWORD: admin_password
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - morms-network
+    depends_on:
+      - postgres
+
+networks:
+  morms-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+  pgadmin_data:
+    driver: local

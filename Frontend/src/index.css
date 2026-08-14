@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap');
+
+:root {
+	--bg-soft: #f5f7fb;
+	--bg-muted: #ecf1f9;
+	--surface: #ffffff;
+	--surface-glass: rgba(255, 255, 255, 0.82);
+	--ink: #112240;
+	--ink-muted: #4d6484;
+	--line: #d8e1ee;
+	--brand: #0f4d9d;
+	--brand-strong: #0a3772;
+	--accent: #ff8f3d;
+	--success: #059669;
+	--danger: #dc2626;
+	--radius-lg: 20px;
+	--radius-md: 14px;
+	--shadow-soft: 0 12px 35px rgba(17, 34, 64, 0.1);
+	--shadow-card: 0 10px 24px rgba(17, 34, 64, 0.08);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+	margin: 0;
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Outfit', 'Segoe UI', sans-serif;
+	color: var(--ink);
+	background:
+		radial-gradient(circle at 8% 0%, rgba(15, 77, 157, 0.16) 0%, rgba(15, 77, 157, 0) 30%),
+		radial-gradient(circle at 96% 16%, rgba(255, 143, 61, 0.15) 0%, rgba(255, 143, 61, 0) 30%),
+		linear-gradient(180deg, #f8fbff 0%, var(--bg-soft) 46%, var(--bg-muted) 100%);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Sora', 'Outfit', sans-serif;
+	letter-spacing: 0.01em;
+}
+
+input,
+select,
+textarea,
+button {
+	font-family: inherit;
+}
+
+button {
+	transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+button:hover {
+	filter: brightness(1.03);
+}
+
+button:active {
+	transform: translateY(1px);
+}
+
+.glass-card {
+	background: var(--surface-glass);
+	border: 1px solid rgba(255, 255, 255, 0.75);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	box-shadow: var(--shadow-soft);
+}
+
+.reveal-up {
+	animation: reveal-up 0.45s ease both;
+}
+
+@keyframes reveal-up {
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #b7c6df;
+	border-radius: 999px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+

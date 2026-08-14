@@ -1,0 +1,90 @@
+Last login: Wed Jun 24 10:38:27 on ttys000
+diprash@macs-MacBook-Air ~ % export PATH="/Users/diprash/.config/herd-lite/bin:$PATH"
+
+diprash@macs-MacBook-Air ~ % clear
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+diprash@macs-MacBook-Air ~ % nano ~/.zshrc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  UW PICO 5.09                                  File: /Users/diprash/.zshrc                                   Modified  
+
+export PATH="/Users/diprash/.config/herd-lite/bin:$PATH"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Get Help         ^O WriteOut         ^R Read File        ^Y Prev Pg          ^K Cut Text         ^C Cur Pos          
+^X Exit             ^J Justify          ^W Where is         ^V Next Pg          ^U UnCut Text       ^T To Spell        

@@ -1,0 +1,64 @@
+# Render deployment manifest for Project MOPL
+# Replace placeholder values (repo, domains, secrets) before use.
+
+services:
+  - type: web
+    name: project-mopl-backend
+    env: docker
+    # Dockerfile path inside the repo
+    dockerfilePath: backend/Dockerfile
+    branch: main
+    plan: starter
+    autoDeploy: true
+    # Optional health check path that should return 200
+    healthCheckPath: /health
+    # Build/start commands are handled by the Docker image
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_URL
+        value: https://project-mopl-backend.onrender.com
+      - key: DATABASE_URL
+        value: "postgres://<db_user>:<db_pass>@<host>:<port>/<db_name>"
+      - key: REDIS_URL
+        value: "redis://<redis_host>:<redis_port>"
+
+  - type: static
+    name: project-mopl-frontend
+    env: static
+    branch: main
+    plan: free
+    buildCommand: |
+      cd Frontend
+      npm ci
+      npm run build
+    publishPath: Frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://project-mopl-backend.onrender.com/api
+
+# Managed databases and caches. Render will create these resources when you
+# apply this manifest in the Dashboard (or you can create them manually and
+# paste connection strings into the backend service env vars).
+databases:
+  - name: project-mopl-db
+    engine: postgres
+    version: "15"
+    plan: starter
+    diskGb: 10
+
+  - name: project-mopl-redis
+    engine: redis
+    version: "6"
+    plan: starter
+
+# Notes:
+# - Do NOT store real secrets in this file. Use Render's Environment variables
+#   UI or connect the generated database/redis credentials to the backend service.
+# - After creating services, set the backend's `APP_KEY` (generate locally using
+#   `php artisan key:generate --show`) in the backend service env vars.
+# - Configure the backend service Release Command (Render → Service → Settings)
+#   to run migrations and cache config, for example:
+#     php artisan migrate --force
+#     php artisan config:cache
+#     php artisan route:cache
