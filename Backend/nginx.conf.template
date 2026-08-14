@@ -13,7 +13,7 @@ http {
   keepalive_timeout 65;
 
   server {
-    listen ${PORT:-80} default_server;
+    listen ${PORT} default_server;
     server_name _;
     root /srv/app/public;
     index index.php index.html index.htm;
