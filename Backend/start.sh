@@ -23,6 +23,7 @@ chown -R www-data:www-data /srv/app/storage /srv/app/bootstrap/cache || true
 
 echo "Running migrations..."
 php artisan migrate --force
+php artisan db:seed --force || true
 
 echo "Starting php-fpm..."
 # Start php-fpm as a daemon
