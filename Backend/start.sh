@@ -21,6 +21,9 @@ fi
 # Ensure storage and cache directories are writable
 chown -R www-data:www-data /srv/app/storage /srv/app/bootstrap/cache || true
 
+echo "Running migrations..."
+php artisan migrate --force
+
 echo "Starting php-fpm..."
 # Start php-fpm as a daemon
 php-fpm -D || php-fpm &
