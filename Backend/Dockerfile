@@ -32,6 +32,8 @@ FROM php:8.4-fpm-alpine AS runtime
 
 RUN apk add --no-cache \
     nginx \
+    gettext \ 
+    postgresql-libs \
     curl \
     libpng-dev \
     libxml2-dev \
