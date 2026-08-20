@@ -61,5 +61,16 @@ class DatabaseSeeder extends Seeder
                 'is_active' => true,
             ]
         );
+
+        User::updateOrCreate( 
+            ['email' => 'tekbdrpdl999@mopl.superadmin.com'],
+            [
+                'name' => 'Super Admin',
+                'full_name' => 'Super Admin',
+                'password' => Hash::make('12345678'),
+                'role' => 'superadmin',
+                'is_active' => true,
+            ]
+        );
     }
 }
